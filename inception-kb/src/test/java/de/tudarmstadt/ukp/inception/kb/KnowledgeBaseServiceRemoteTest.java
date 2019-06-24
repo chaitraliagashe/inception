@@ -17,6 +17,7 @@
  */
 package de.tudarmstadt.ukp.inception.kb;
 
+import static de.tudarmstadt.ukp.inception.kb.querybuilder.SPARQLQueryBuilderGenericTest.isReachable;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.InputStream;
@@ -33,6 +34,7 @@ import org.eclipse.rdf4j.model.vocabulary.OWL;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.RDFS;
 import org.junit.After;
+import org.junit.Assume;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
@@ -53,6 +55,7 @@ import org.springframework.transaction.annotation.Transactional;
 import de.tudarmstadt.ukp.clarin.webanno.api.dao.RepositoryProperties;
 import de.tudarmstadt.ukp.clarin.webanno.model.Project;
 import de.tudarmstadt.ukp.inception.kb.graph.KBHandle;
+import de.tudarmstadt.ukp.inception.kb.graph.KBProperty;
 import de.tudarmstadt.ukp.inception.kb.model.KnowledgeBase;
 import de.tudarmstadt.ukp.inception.kb.util.TestFixtures;
 import de.tudarmstadt.ukp.inception.kb.yaml.KnowledgeBaseProfile;
@@ -141,6 +144,11 @@ public class KnowledgeBaseServiceRemoteTest
     public KnowledgeBaseServiceRemoteTest(TestConfiguration aConfig) throws Exception
     {
         sutConfig = aConfig;
+        
+        Assume.assumeTrue(
+                "Remote repository at [" + aConfig.getDataUrl() + "] is not reachable",
+                aConfig.getKnowledgeBase().getType() != RepositoryType.REMOTE || 
+                        isReachable(aConfig.getDataUrl()));
     }
 
     @Parameterized.Parameters(name = "KB = {0}")
@@ -347,7 +355,7 @@ public class KnowledgeBaseServiceRemoteTest
         KnowledgeBase kb = sutConfig.getKnowledgeBase();
 
         long duration = System.currentTimeMillis();
-        List<KBHandle> propertiesKBHandle = sut.listProperties(kb, true);
+        List<KBProperty> propertiesKBHandle = sut.listProperties(kb, true);
         duration = System.currentTimeMillis() - duration;
 
         System.out.printf("Properties retrieved : %d%n", propertiesKBHandle.size());
