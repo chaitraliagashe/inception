@@ -53,6 +53,8 @@ include::{include-dir}dashboard_project-view.adoc[leveloffset=+1]
 
 include::{include-dir}annotation.adoc[leveloffset=+1]
 
+include::{include-dir}other_editors.adoc[leveloffset=+1]
+
 include::{include-dir}annotation_open.adoc[leveloffset=+2]
 
 include::{include-dir}annotation_navigation.adoc[leveloffset=+2]
@@ -133,6 +135,8 @@ include::{include-dir}projects_recommendation_conceptlinker.adoc[leveloffset=+2]
 
 include::{include-dir}projects_recommendation_external.adoc[leveloffset=+2]
 
+include::{include-dir}projects_recommendation_lappsgrid.adoc[leveloffset=+2]
+
 include::{include-dir}projects_tagsets.adoc[leveloffset=+2]
 
 include::{include-dir}projects_export.adoc[leveloffset=+2]
@@ -173,6 +177,10 @@ include::{include-dir}casdoctor.adoc[leveloffset=+1]
 <<<
 
 include::{include-dir}guidelines.adoc[leveloffset=+1]
+
+<<<
+
+include::{include-dir}pdf-editor.adoc[leveloffset=+1]
 
 <<<
 
