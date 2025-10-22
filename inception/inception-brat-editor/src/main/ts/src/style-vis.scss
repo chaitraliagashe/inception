@@ -1,0 +1,368 @@
+/*
+ * ## brat ##
+ * Copyright (C) 2010-2012 The brat contributors, all rights reserved.
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+ * of the Software, and to permit persons to whom the Software is furnished to do
+ * so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+@import '~@inception-project/inception-js-api/src/style/InceptionEditorColors.scss';
+@import '~@inception-project/inception-js-api/src/style/InceptionEditorIcons.scss';
+
+$color_1: #2e6e9e;
+$color_2: #000000;
+$color_3: #333333;
+$font_family_1: Verdana, Arial, Helvetica, sans-serif;
+$font_family_2: sans-serif;
+$font_family_3: monospace;
+$background_color_1: #ff4141;
+$background_color_2: #c20000;
+$background_color_3: #ff7777;
+$background_color_4: #ff9900;
+$background_color_5: #d7e7ee;
+$background_color_6: #d7eee7;
+$background_color_7: #ffff77;
+$background_color_8: #ddddff;
+$background_color_9: #f5f5f9;
+$background_color_10: #ffcccc;
+
+
+.brat {
+  .center_wrapper {
+    display: table;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    >div {
+      display: table-cell;
+      vertical-align: middle;
+      >div {
+        color: $color_1;
+        margin-left: auto;
+        margin-right: auto;
+        width: 30em;
+        font-size: 12px;
+        font-family: $font_family_1;
+        h1 {
+          text-align: center;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  
+  svg {
+    border: 1px solid #7fa2ff;
+    font-size: 15px;
+  }
+  
+  text {
+    font-size: 100%;
+    font-family: $font_family_1;
+  }
+  
+  path {
+    pointer-events: none;
+  }
+  
+  .span {
+    text {
+      font-size: 75%;
+      text-anchor: middle;
+      font-family: $font_family_2;
+      pointer-events: none;
+    }
+    rect {
+      stroke-width: 0.75;
+    }
+    rect.False_positive {
+      stroke: #ff4141;
+      stroke-width: 2;
+    }
+    rect.False_negative {
+      stroke: #c20000;
+      fill: #ffffff;
+      stroke-width: 2;
+    }
+    rect.AnnotationError {
+      stroke-width: 1;
+    }
+    rect.AnnotationWarning {
+      stroke-width: 1;
+    }
+    rect.AnnotationIncomplete {
+      stroke: #002200;
+      stroke-width: 0.5;
+      fill: #ffffff;
+    }
+    rect.AnnotationUnconfirmed {
+      stroke: #002200;
+      stroke-width: 0.5;
+      opacity: 0.5;
+    }
+    path {
+      fill: none;
+    }
+    path.curly {
+      stroke-width: 0.5;
+    }
+    path.boxcross {
+      stroke: black;
+      opacity: 0.5;
+    }
+    .reselect {
+      stroke-width: 2px;
+    }
+    .reselectTarget {
+      stroke-width: 2px;
+    }
+    .badTarget {
+      stroke: #f00;
+    }
+    rect.AddedAnnotation {
+      stroke: #ff4141;
+      stroke-width: 2;
+    }
+    rect.MissingAnnotation {
+      stroke: #ffffff;
+      stroke-width: 2;
+      &+text {
+        opacity: 0.5;
+      }
+    }
+    rect.ChangedAnnotation {
+      stroke: #ffff99;
+      stroke-width: 2;
+    }
+  }
+  
+  .span_type_label {
+    font-size: 11px;
+    font-family: $font_family_2;
+  }
+  
+  .arc_type_label {
+    font-size: 11px;
+    font-family: $font_family_2;
+  }
+  
+  .attribute_type_label {
+    .ui-button-text {
+      font-size: 11px;
+      font-family: $font_family_2;
+    }
+  }
+  
+  .glyph {
+    fill: #444444;
+    font-family: $font_family_2;
+    font-weight: bold;
+  }
+  
+  .attribute_warning {
+    stroke: red;
+  }
+
+  .shadow {
+    -moz-box-shadow: 5px 5px 5px #444444;
+    -webkit-box-shadow: 5px 5px 5px #444444;
+    box-shadow: 5px 5px 5px #444444;
+
+    &_True_positive { fill: #00ff00; }
+    &_False_positive { fill: #ff4141; }
+    &_False_negative { fill: #c20000; }
+    &_AnnotationError { fill: #ff0000; }
+    &_AnnotationWarning { fill: #ff8800; }
+    &_AnnotatorNotes { fill: #3ab7ee; }
+    &_Normalized { fill: #3aee37; }
+    &_AnnotationIncomplete { fill: #aaaaaa; }
+    &_AnnotationUnconfirmed { fill: #eeeeee; }
+    &_AddedAnnotation { fill: #ff4141; }
+    &_MissingAnnotation { fill: #ff4141; opacity: 0.3; }
+    &_ChangedAnnotation { fill: #ff4141; }
+    &_EditHighlight_arc {
+      stroke: orange;
+      -webkit-animation-name: flash;
+      animation-name: flash;
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
+  }
+  
+  rect.Normalized {
+    stroke-width: 1.5;
+  }
+  
+  rect.shadow_EditHighlight {
+    fill: orange;
+    -webkit-animation-name: flash;
+    animation-name: flash;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  .arcs {
+    path {
+      stroke: #989898;
+      fill: none;
+      stroke-width: 1;
+    }
+    .highlight {
+      path {
+        stroke: #000000;
+        stroke-width: 1.5;
+        opacity: 1;
+      }
+      text {
+        stroke: black;
+        fill: black;
+        stroke-width: 0.5;
+      }
+    }
+    .reselect {
+      path {
+        stroke-width: 2px;
+        stroke: #ff0000 !important;
+      }
+      text {
+        fill: #ff0000 !important;
+      }
+    }
+    text {
+      font-size: 70%;
+      text-anchor: middle;
+      font-family: $font_family_2;
+      cursor: default;
+    }
+  }
+  
+  .span.highlight {
+    .span_default {
+      stroke-width: 2px;
+    }
+  }
+  
+  .background0 {
+    stroke: none;
+    fill: #ffffff;
+  }
+  
+  .background1 {
+    stroke: none;
+    fill: #eeeeee;
+  }
+  
+  .backgroundHighlight {
+    stroke: none;
+    fill: #ffff99;
+  }
+  
+  .sentnum {
+    text {
+      fill: #999999;
+      text-anchor: end;
+    }
+    path {
+      stroke: #999999;
+      stroke-width: 1px;
+    }
+  }
+  
+  .span_cue {
+    fill: #eeeeee !important;
+  }
+  
+  .drag_stroke {
+    stroke: black;
+  }
+  
+  .drag_fill {
+    fill: black;
+  }
+  
+  .label-like {
+    font-family: $font_family_3;
+    font-weight: bold;
+    font-size: 90%;
+    color: $color_1;
+  }
+  
+  .accesskey {
+    text-decoration: underline;
+  }
+    
+  .contain-selection {
+    -moz-user-select: -moz-contain;
+    -khtml-user-select: contain;
+    -webkit-user-select: contain;
+    -o-user-select: contain;
+    user-select: contain;
+  }
+
+  .unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    cursor: default;
+  }
+  
+  * {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    select: none;
+  }
+    
+  .highlights {
+    .matchfocus {
+      fill: var(--i7n-match-focus-color);
+      -webkit-animation-name: flash;
+      animation-name: flash;
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
+
+    .focus {
+      fill: var(--i7n-focus-color);
+      -webkit-animation-name: flash;
+      animation-name: flash;
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
+
+    rect.match {
+      fill: var(--i7n-match-color);
+      // opacity: 0.25;
+    }
+  }
+
+  .ping {
+    fill: none;
+    stroke: orange;
+    stroke-width: 2px;
+  }
+}

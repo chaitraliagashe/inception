@@ -1,0 +1,58 @@
+// Licensed to the Technische Universität Darmstadt under one
+// or more contributor license agreements.  See the NOTICE file
+// distributed with this work for additional information
+// regarding copyright ownership.  The Technische Universität Darmstadt 
+// licenses this file to you under the Apache License, Version 2.0 (the
+// "License"); you may not use this file except in compliance
+// with the License.
+//  
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+[[sect_projects_tagsets]]
+= Tagsets
+
+To manage the tagsets, click on the *Tagsets* tab in the project pane.
+
+image::images/project7.jpg[align="center"]
+
+== Editing Tagsets
+
+To edit an existing tagset:
+
+1. Select the tagset by clicking on it. The tagset details will be displayed.
+2. In the *Tagset details* frame, you can:
+   - Change the tagset characteristics
+   - Export the tagset
+   - Save your changes
+   - Delete the tagset by clicking *Delete tagset*
+
+image::images/project8.jpg[align="center"]
+
+== Managing Tags
+
+- To edit a tag, select it from the list in the *Tags* frame.
+  You can then change its name or description, or delete it by clicking *Delete tag* in *Tag details*. 
+  Remember to save your changes by clicking *Save tag*.
+- To add a new tag, click *Create tag* in *Tag details*.
+  Enter the name and (optionally) a description.
+  Click *Save tag* to create the new tag.
+
+== Creating a New Tagset
+
+To create a new tagset:
+
+1. Click on *Create tagset*.
+2. Fill in the fields in the new frame. Only the first field is required.
+3. Add new tags as described above. If you want a free annotation (e.g., for lemma or meta information), do not add any tags.
+
+image::images/project_tagset_new.jpg[align="center"]
+
+== Exporting a Tagset
+
+To export a tagset, select the desired export format at the bottom of the frame and click *Export tagset*.

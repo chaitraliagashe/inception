@@ -1,0 +1,57 @@
+<!--
+  Licensed to the Technische Universität Darmstadt under one
+  or more contributor license agreements.  See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership.  The Technische Universität Darmstadt 
+  licenses this file to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License.
+   
+  http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:panel>
+  <div wicket:id="dialog"/>
+  <div class="row form-row" wicket:enclosure="value">
+    <label wicket:for="value" wicket:enclosure="feature" class="feature-editor-label col-form-label">
+      <span wicket:id="feature"/>
+      <a wicket:id="openIri" class="float-end ms-2" target="_blank" tabindex="-1">
+        <i class="fas fa-external-link-alt"/>
+      </a>
+      <span class="float-end">
+        <a wicket:id="openBrowseDialog" class="float-end" tabindex="-1">
+          <i class="fas fa-sitemap"/>
+        </a>
+        <span wicket:id="deprecationMarker" class="badge rounded-pill text-secondary border border-secondary">deprecated</span>
+        <span wicket:id="disabledKBWarning"/>
+      </span>
+    </label>
+    <div class="feature-editor-value">
+      <div class="list-group">
+        <ul class="list-group-item p-0 m-0">
+          <div class="input-group">
+            <div class="input-group-text border-0">
+              <span wicket:id="iriInfoBadge"/>
+            </div>
+            <input class="flex-content border-bottom-0 border-end-0 border-top-0 " wicket:id="value" type="text"/>
+          </div>
+        </ul>
+        <ul wicket:id="descriptionContainer" class="list-group-item p-0 m-0 overflow-hidden" readonly>
+          <div class="scrolling p-1 text-muted small" style="max-height: 4.5rem; word-wrap: break-word;">
+            <span wicket:id="description"/>
+          </div>
+        </ul>
+      </div>
+      <div wicket:id="suggestionInfo" class="d-flex"/>
+      <div wicket:id="keyBindings" class="col-sm-12"/>
+    </div>
+  </div>
+</wicket:panel>
+</html>

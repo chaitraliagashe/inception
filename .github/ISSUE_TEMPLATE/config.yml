@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "💡 Discussions (GitHub)"
+    url: https://github.com/inception-project/inception/discussions
+    about: Ideas, questions, ...
+  - name: "✉️ Mailing list (Google Group)"
+    url: https://groups.google.com/d/forum/inception-users
+    about: Community support, release announcements.
+  - name: "💬 Chat (Matrix/Gitter)"
+    url: https://gitter.im/inception-project/Lobby
+    about: Public chat channel.

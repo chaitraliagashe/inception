@@ -1,0 +1,67 @@
+// Licensed to the Technische Universität Darmstadt under one
+// or more contributor license agreements.  See the NOTICE file
+// distributed with this work for additional information
+// regarding copyright ownership.  The Technische Universität Darmstadt 
+// licenses this file to you under the Apache License, Version 2.0 (the
+// "License"); you may not use this file except in compliance
+// with the License.
+//  
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+= System Requirements
+
+.Requirements for users
+[cols="2*"]
+|===
+| Browser
+| Chrome or Safari (latest versions)
+|===
+
+[.small]
+You should also be able to use {product-name} with other browsers such as Firefox, Brave, etc. However, those are less regularly tested by the developers. It is recommended to always use the latest version of any browser product you may be using to ensure best compatibility.
+
+.Requirements to run the standalone version
+[cols="2*"]
+|===
+| Operating System
+| Linux (64bit), macOS (64bit), Windows (64bit)
+
+| Java Runtime Environment
+| version 17 or higher
+|===
+
+[.small]
+The examples in this guide are based on a recent Debian Linux. Most of them should apply quite directly to Debian-based distributions like e.g. Ubuntu. {product-name} will run on other distributions as well, but you may have to use different commands for managing users, installing software, etc.
+
+.Requirements run the server version
+[cols="2*"]
+|===
+| Operating System
+| Linux (64bit), macOS (64bit), Windows (64bit)
+
+| Java Runtime Environment
+| version 17 or higher
+
+| DB Server
+| MariaDB version 10.6 or higher +
+  MySQL version 8.0 or higher +
+  MS SQL Server 2022 or higher (🧪 experimental) +
+  PostgreSQL 16.3 or higher (🧪 experimental) 
+
+|===
+
+[.small]
+You may be able to run {product-name} on older database server versions but it may require extra configuration that is not included in this documentation. You may consider referring to older versions of this administrators guide included with older versions of {product-name}.
+
+.Requirements for a Docker-based deployment
+[cols="2*"]
+|===
+| Docker
+| version 24 or higher (arm64 or amd64)
+|===

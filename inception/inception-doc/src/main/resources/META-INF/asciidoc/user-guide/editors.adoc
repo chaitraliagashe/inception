@@ -1,0 +1,102 @@
+// Licensed to the Technische Universität Darmstadt under one
+// or more contributor license agreements.  See the NOTICE file
+// distributed with this work for additional information
+// regarding copyright ownership.  The Technische Universität Darmstadt 
+// licenses this file to you under the Apache License, Version 2.0 (the
+// "License"); you may not use this file except in compliance
+// with the License.
+//  
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+[[sect_editors]]
+= Editors
+
+This section provides information about the different annotation editors that {product-name}
+provides.
+
+.Editor overview
+|====
+| Editor | Feature flag | Spans | Relations/Links
+
+| <<sect_editors_brat_sentence_oriented>>
+| `ui.brat.enabled`
+| yes
+| yes
+
+| <<sect_editors_brat_line_oriented>>
+| `ui.brat.enabled`
+| yes
+| yes
+
+| <<sect_editors_brat_wrapping>>
+| `ui.brat.enabled`
+| yes
+| yes
+
+| <<sect_editors_html_apache_annotator>>
+| `ui.html-apacheannotator.enabled`
+| yes
+| no
+
+| <<sect_editors_html_recogitojs>>
+| `ui.html-recogitojs.enabled`
+| yes
+| yes
+
+| <<sect_editors_pdf>>
+| `ui.pdf.enabled`
+| yes
+| yes
+|====
+
+[[sect_editors_brat_sentence_oriented]]
+== Brat (sentence-oriented)
+
+A sentence-oriented presentation of the text using inter-linear annotations. This editor is useful for texts that have been externally segmented into sentences. It supports rendering span annotations, relations and link features. The editor uses a heavily improved version of the rendering engine of link:https://brat.nlplab.org[brat].
+
+[[sect_editors_brat_line_oriented]]
+== Brat (line-oriented)
+
+A line-oriented presentation of the text using inter-linear annotations. This editor is useful for texts formatted using line breaks. It supports rendering span annotations, relations and link features. The editor uses a heavily improved version of the rendering engine of link:https://brat.nlplab.org[brat].
+
+[[sect_editors_brat_wrapping]]
+== Brat (wrapping @ 120 chars)
+
+A line-oriented presentation of the text using inter-linear annotations that also wraps lines longer than 120 characters. This editor is useful for texts using consecutive line breaks mainly to indicate paragraph boundaries but that do not use line breaks within paragraphs. It supports rendering span annotations, relations and link features. The editor uses a heavily improved version of the rendering engine of link:https://brat.nlplab.org[brat].
+
+[[sect_editors_html_apache_annotator]]
+== HTML (Apache Annotator)
+
+This editor renders documents imported using a XML/HTML-based format such as <<sect_formats_mhtml>> or <<sect_formats_htmldoc>>. It is build on top of link:https://annotator.apache.org[Apache Annotator]. It supports rendering span annotations but not relations or link features.
+
+[[sect_editors_html_recogitojs]]
+== 🧪 HTML (RecogitoJS)
+
+====
+CAUTION: Experimental feature. To use this functionality, you need to enable it first by adding `ui.html-recogitojs.enabled` to the `settings.properties` file.
+====
+
+This editor renders documents imported using a XML/HTML-based format such as <<sect_formats_mhtml>> or <<sect_formats_htmldoc>>. It is build on top of link:https://github.com/recogito/recogito-js[RecogitoJS]. It supports rendering span annotations, relations and link features.
+
+[[sect_editors_pdf]]
+== PDF
+
+This editor allows annotating PDF documents. It is based on link:https://mozilla.github.io/pdf.js/[PDF.js] (version 2.x) and on the {product-name} PDF format support. The editor supports rendering span annotations, relations and link features. The editor uses a heavily improved version of the rendering engine of link:https://github.com/paperai/pdfanno[PDFAnno].
+
+[[sect_editors_plugins]]
+== 🧪 Editor plugins
+
+====
+CAUTION: Experimental feature. The available plugins as well as their compatibility with a given
+version of {product-name} may change without further notice.
+====
+
+In addition to these different editors, {product-name} has the ability to load editor plugins.
+Several of these can be found on your link:https://github.com/orgs/inception-project/repositories[website]. You can use these as inspirations to <<developer-guide.adoc#sect_external_editors,write your own>>.
+

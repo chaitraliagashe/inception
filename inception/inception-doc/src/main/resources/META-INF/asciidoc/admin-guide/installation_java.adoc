@@ -1,0 +1,44 @@
+// Licensed to the Technische Universität Darmstadt under one
+// or more contributor license agreements.  See the NOTICE file
+// distributed with this work for additional information
+// regarding copyright ownership.  The Technische Universität Darmstadt 
+// licenses this file to you under the Apache License, Version 2.0 (the
+// "License"); you may not use this file except in compliance
+// with the License.
+//  
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+= Install Java
+
+NOTE: If you aim for a Docker-based deployment, it is useful for you to read the following sections to better understand
+      how the overall setup works. However, you will not have to install Java. If you use Docker Compose, you may also not have
+      to install a database. Refer to the <<sect_docker>> section instead.
+
+You can install a Java 17 JDK using the following commands.
+
+.Installing Java from your Linux distribution
+[source,bash]
+----
+$ apt update
+$ apt install openjdk-17-jdk
+----
+
+Alternative, you can install a more recent Java version e.g. from link:https://adoptium.net/en-GB/installation/linux/[Adoptium].
+
+.Installing Java from Adoptium
+[source,bash]
+----
+$ * apt update
+$ apt install gpg
+$ wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor | tee /etc/apt/trusted.gpg.d/adoptium.gpg > /dev/null
+$ echo "deb https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" | tee /etc/apt/sources.list.d/adoptium.list
+$ apt update
+$ apt install temurin-21-jdk
+----
+

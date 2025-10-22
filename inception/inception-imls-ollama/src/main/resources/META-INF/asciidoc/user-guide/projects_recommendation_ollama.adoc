@@ -1,0 +1,78 @@
+// Licensed to the Technische Universität Darmstadt under one
+// or more contributor license agreements.  See the NOTICE file
+// distributed with this work for additional information
+// regarding copyright ownership.  The Technische Universität Darmstadt 
+// licenses this file to you under the Apache License, Version 2.0 (the
+// "License"); you may not use this file except in compliance
+// with the License.
+//  
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+[[sect_imls_ollama]]
+== 🧪 Ollama
+
+====
+CAUTION: Experimental feature. To use this functionality, you need to enable it first by adding `recommender.ollama.enabled=true` to the `settings.properties` file (see the <<admin-guide.adoc#sect_settings, Admin Guide>>).
+====
+
+This recommender allows to obtain annotation suggestions using large language models (LLMs) supported by link:https://ollama.ai[Ollama]. In order to use it, you first need to install Ollama and run it. 
+
+.Installing and running Mistral using Ollama on macOS via homebrew
+[source,sh]
+----
+$ brew install ollama
+$ ollama pull mistral
+$ ollama serve
+----
+
+By default, Ollama runs on `http://localhost:11434/` and {product-name} uses this as the default endpoint for communicating with it. If you run Ollama on a different host (e.g. one that has a more powerful GPU) or port, you can adjust this URL in the recommender settings.
+
+If {product-name} can successfully connect to Ollama, the **model** combo-box will offer all models that are available on the respective endpoint. If you want to use a model that is not listed here, you first need to `ollama pull` it.
+
+If the option **interactive** is enabled, the recommender will be available on the annotation page in the interactive annotation sidebar.
+Most of the other options described below are then configurable in the sidebar and not be shown in the recommender settings.
+
+The option **Structured output supported** should be enabled if the model / LLM service you are using supports structured output.
+If structured output is supported, {product-name} will try to describe the expected responses, possible labels, etc. to the LLM using a JSON schema.
+If this option is not enabled, {product-name} will use a more generic prompt and try to interpret the LLMs response - which may or may not be successful.
+
+Now you can configure how to generate the prompts that are sent to Ollama and how to interpret its response using the following settings:
+
+* **Layer**: the layer to generat annotation suggestions for.
+* **Feature**: the feature to predict. 
+  If there is only one eligible feature in the layer, this this choice is not offered.
+* **Context**: the prompt is executed once for each context unit.
+* **Task**: the kind of task to be described in the prompt. 
+* **Justifications**: whether to generate justifications for the suggestions.
+  Note that enabling justifications will increase the time it takes to generate suggestions.
+* **Prompt**: the prompt that is sent to Ollama
+* **Keep**: whether to keep existing suggestion when new suggestions are generated.
+
+The **context** setting can assume various values:
+* **Per sentence**: the prompt is executed once for each sentence in the document.
+* **Per paragraph**: the prompt is executed once for each paragraph in the document.
+  This only works if the document format supports paragraphs (e.g. HTML).
+* **Per document**: the prompt is executed once for each sentence in the document.
+
+E.g. for mention annotation tasks, choosing **per paragraph** tends of offer a good balance between speed and quality.
+
+The **task** setting can assume various values:
+* **Identify mentions within context**: the LLM will be asked to identify words or phrases within the selected context units.
+* **Apply to context as a whole**: the LLM will asked to generate a response applying to each of the
+context units. This can be used e.g. for summarization tasks.
+
+When **justifications** are enabled, the LLM will be asked to provide a justification for each of the suggestions it generates.
+This is useful for understanding why the LLM made a certain suggestion and can help you to evaluate its quality.
+However, this will significantly increase the time it takes to generate suggestions.
+The justifications are shown as **score explanation** when you hover over the suggestion in the annotation editor.
+The generation of justifications is only possible if structured output support is enabled.
+
+Here you can finally define the prompt that is sent to Ollama.
+Typically, this is an instruction such as `Identify persons and places` or `Identify medications, drugs and dosages`.
+If the **feature** that is predicted has a tagset, the system will try to instruct the LLM to only use the tags available in the tagset provide the tagset and tag descriptions to the LLM.
